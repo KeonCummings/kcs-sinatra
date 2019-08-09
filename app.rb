@@ -1,8 +1,12 @@
-require 'sinatra'
+require 'rubygems'
+require 'bundler'
+Bundler.require
 
-class MyApp < Sinatra::Base
-	get '/' do
-		"<!DOCTYPE html><html><head></head><body><h1>Hello Goodbye World</h1></body></html>"
-	end
+Tilt.register Tilt::ERBTemplate, 'html.erb'
+
+set :public_folder, 'public'
+
+get "/" do
+  erb :index
 end
 
